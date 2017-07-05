@@ -19,7 +19,6 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
         <!-- Hibernate Core -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -32,7 +31,7 @@
 			<version>1.7.20</version>
 		</dependency>
 
-        <!-- MySQL JDBC driver -->
+        <!-- mysql驱动 -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
