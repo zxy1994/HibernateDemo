@@ -9,9 +9,11 @@ import com.zxy.hibernatelock.utils.HibernateUtil;
 
 /**
  * 乐观锁的demo
- * @author zxy
- *
+ * @author   ZENG.XIAO.YAN
+ * @date 	 2017年9月25日 上午9:36:24
+ * @version  v1.0
  */
+
 public class LockDemo {
 	@Test
 	public void test01() {
