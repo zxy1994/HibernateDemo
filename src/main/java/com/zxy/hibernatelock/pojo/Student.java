@@ -8,7 +8,7 @@ public class Student implements Serializable {
 	private Integer id;
 	private String name;
 	private Integer age;
-/*	private Integer version;*/
+	private Integer version;
 	
 	public Integer getId() {
 		return id;
@@ -28,12 +28,12 @@ public class Student implements Serializable {
 	public void setAge(Integer age) {
 		this.age = age;
 	}
-	/*public Integer getVersion() {
+	public Integer getVersion() {
 		return version;
 	}
 	public void setVersion(Integer version) {
 		this.version = version;
-	}*/
+	}
 	
 	
 

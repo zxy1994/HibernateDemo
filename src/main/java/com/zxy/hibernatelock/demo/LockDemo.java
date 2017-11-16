@@ -5,6 +5,7 @@ import org.hibernate.Transaction;
 import org.junit.Test;
 
 import com.zxy.hibernatelock.pojo.Student;
+import com.zxy.hibernatelock.pojo.Teacher;
 import com.zxy.hibernatelock.utils.HibernateUtil;
 
 /**
@@ -15,8 +16,12 @@ import com.zxy.hibernatelock.utils.HibernateUtil;
  */
 
 public class LockDemo {
+	
+	/**
+	 * 一个乐观锁的demo，测试下乐观锁的使用
+	 */
 	@Test
-	public void test01() {
+	public void testLock() {
 		Session session1 = null;
 		Session session2 = null;
 		Transaction tr1 = null;
@@ -30,17 +35,21 @@ public class LockDemo {
 			Student s1 = (Student) session1.get(Student.class, 1);
 			Student s2 = (Student) session2.get(Student.class, 1);
 			// session1修改属性值
-			s1.setName("宝强");
+			s1.setName("宝强1");
 			session1.saveOrUpdate(s1);
 			tr1.commit();	//这里提交后，版本变了
 			// session2再修改
 			s2.setName("宋哲");
 			session2.saveOrUpdate(s2);
 			// 再创建一个马蓉
-			Student mr = new Student();
-			mr.setName("马蓉");
-			session2.save(mr);
-			tr2.commit();	// 这里抛异常
+			Student s3 = new Student();
+			s3.setName("马蓉");
+			session2.save(s3);
+			Teacher t = new Teacher();
+			t.setName("苍老师");
+			session2.save(t);
+			// s1和s2指向了数据库的同一条记录。由于有乐观锁，所以tr2提交失败
+			tr2.commit();	// 这里抛异常  
 		} catch (Exception e) {
 			e.printStackTrace();
 			tr2.rollback();
@@ -53,6 +62,5 @@ public class LockDemo {
 			}
 		}
 		//未完待续
-		
 	}
 }
