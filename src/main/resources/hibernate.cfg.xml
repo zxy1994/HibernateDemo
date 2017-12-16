@@ -17,6 +17,7 @@
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<!-- 3.映射资源信息（可选） -->
 		<mapping resource="hbm/Student.hbm.xml"/>
+		<mapping class="com.zxy.hibernatelock.pojo.Book"/>
 		<mapping class="com.zxy.hibernatelock.pojo.Teacher"/>
 	</session-factory>
 </hibernate-configuration>
